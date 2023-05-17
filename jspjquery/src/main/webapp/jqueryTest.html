@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>제이쿼리</title>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript">
+	$(function () {
+		$('h1').click(function () {
+			$(this).text('안녕하세요');
+		});
+		
+	});
+	
+	function change() {
+		$('#imgArea img').attr('src','images/boy.png');
+	}
+	
+	function addtext() {
+		let text = $('#content').val();
+		$('#output').append(text);
+	}
+</script>
+</head>
+<body>
+	<h1>제이쿼리 테스트</h1>
+	<div id="imgArea">
+		<img src="images/girl.png" alt="girl">
+	</div>
+	<input type="button" value="이미지 바꾸기" onclick="change()"><br>
+	<input type="text" id="content">
+	<input type="button" value="내용출력" onclick="addtext()">
+	<div id="output">
+		<h2>입력한 결과</h2>
+	</div>
+</body>
+</html>
