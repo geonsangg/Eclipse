@@ -105,4 +105,45 @@ public class MemberDAO {
 		}
 		return memFind;
 	}
+	
+	//회원 정보 수정 메서드
+	public void modMember(MemberVO memVo) {
+		String id = memVo.getId();
+		String pwd = memVo.getPwd();
+		String name = memVo.getName();
+		String email = memVo.getEmail();
+		try {
+			conn = dataFactory.getConnection();
+			String query = "update membertbl set pwd=?, name=?, email=? where id=?";
+			System.out.println(query);
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, pwd);
+			pstmt.setString(2, name);
+			pstmt.setString(3, email);
+			pstmt.setString(4, id);
+			pstmt.executeUpdate();
+			pstmt.close();
+			conn.close();
+		}catch (Exception e) {
+			System.out.println("회원 정보 수정 중 에러");
+			e.printStackTrace();
+		}
+	}
+	
+	//회원 정보 삭제 메서드
+	public void delMember(String id) {
+		try {
+			conn = dataFactory.getConnection();
+			String query = "delete from membertbl where id=?";
+			System.out.println(query);
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, id);
+			pstmt.executeUpdate();
+			pstmt.close();
+			conn.close();
+		}catch (Exception e) {
+			System.out.println("회원 정보 삭제 중 에러");
+			e.printStackTrace();
+		}
+	}
 }

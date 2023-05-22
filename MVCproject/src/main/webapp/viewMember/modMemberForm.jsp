@@ -13,7 +13,7 @@
 <title>회원정보 수정창</title>
 </head>
 <body>	<!-- disabled가 되어 있다면 submit해도 가져가지 않기 때문에 action에 매개변수로 넣어서 가져간다. -->
-	<form action="${contextPath}/member/modMember.do?id=${memFindInfo}" method="post">
+	<form action="${contextPath}/member/modMember.do?id=${memFindInfo.id}" method="post">
 		<h2 align="center">회원 수정창</h2>
 		<table align="center">
 			<tr>

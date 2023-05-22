@@ -11,6 +11,29 @@
 <head>
 <meta charset="UTF-8">
 <title>회원정보 출력창</title>
+<c:choose>
+	<c:when test='${msg=="addMember"}'>
+		<script>
+			window.onload = function () {
+				alert("회원을 등록했습니다.");
+			}
+		</script>
+	</c:when>
+	<c:when test='${msg=="modMember"}'>
+		<script>
+			window.onload = function () {
+				alert("회원을 수정했습니다.");
+			}
+		</script>
+	</c:when>
+	<c:when test='${msg=="delMember"}'>
+		<script>
+			window.onload = function () {
+				alert("회원을 삭제했습니다.");
+			}
+		</script>
+	</c:when>
+</c:choose>
 </head>
 <body>
 	<h2 align="center">회원정보</h2>

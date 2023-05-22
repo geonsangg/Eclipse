@@ -45,6 +45,7 @@ public class MemberController extends HttpServlet {
 			String email = request.getParameter("email");
 			MemberVO memVo = new MemberVO(id, pwd, name, email);
 			dao.addMember(memVo);
+			request.setAttribute("msg", "addMember");
 			nextPage = "/member/listMembers.do";
 		}else if(action.equals("/memberForm.do")) {
 			nextPage="/viewMember/memberForm.jsp";
@@ -54,7 +55,23 @@ public class MemberController extends HttpServlet {
 			request.setAttribute("memFindInfo", memFindInfo);
 			nextPage = "/viewMember/modMemberForm.jsp";
 		}else if(action.equals("/modMember.do")) {
-			
+			String id = request.getParameter("id");
+			String pwd = request.getParameter("pwd");
+			String name = request.getParameter("name");
+			String email = request.getParameter("email");
+			MemberVO memVo = new MemberVO(id, pwd, name, email);
+			dao.modMember(memVo);
+			request.setAttribute("msg", "modMember");
+			nextPage="/member/listMembers.do";
+		}else if(action.equals("/delMember.do")) {
+			String id = request.getParameter("id");
+			dao.delMember(id);
+			request.setAttribute("msg", "delMember");
+			nextPage="/member/listMembers.do";
+		}else {
+			List<MemberVO> membersList = dao.listMembers();  
+			request.setAttribute("membersList", membersList); 
+			nextPage="/viewMember/listMembers.jsp";
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
 		dispatcher.forward(request, response);
