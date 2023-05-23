@@ -1,5 +1,8 @@
 package MVCproject.board;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.sql.Date;
 
 public class ArticleVO {
@@ -69,11 +72,26 @@ public class ArticleVO {
 	}
 
 	public String getImageFileName() {
+		try {
+			if(imageFileName != null && imageFileName.length() != 0) {
+				imageFileName = URLDecoder.decode(imageFileName, "utf-8");
+			}
+		}catch (UnsupportedEncodingException e) {
+			System.out.println("이미지 읽는 중 에러");
+		}
 		return imageFileName;
 	}
 
 	public void setImageFileName(String imageFileName) {
-		this.imageFileName = imageFileName;
+		try {
+			if(imageFileName != null && imageFileName.length() != 0) {
+				this.imageFileName = URLEncoder.encode(imageFileName, "utf-8");
+			}else {
+				this.imageFileName = null;
+			}
+		}catch (UnsupportedEncodingException e) {
+			System.out.println("이미지 저장 중 에러");
+		}
 	}
 
 	public Date getWriteDate() {
