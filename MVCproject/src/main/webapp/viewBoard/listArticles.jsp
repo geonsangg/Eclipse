@@ -7,9 +7,10 @@
 <c:set var="totArticles" value="${articleMap.totArticles}"/>
 <c:set var="section" value="${articleMap.section}"/>
 <c:set var="pageNum" value="${articleMap.pageNum}"/>
+<c:set var="tot100" value="${totArticles % 100}"/>
 <c:choose>
 	<c:when test="${section > totArticles/100}">
-		<c:set var="endValue" value="${(totArticles % 100)/10}"/>
+		<c:set var="endValue" value="${(tot100%10) == 0? tot100/10 : tot100/10+1}"/>
 	</c:when>
 	<c:otherwise>
 		<c:set var="endValue" value="10"/>

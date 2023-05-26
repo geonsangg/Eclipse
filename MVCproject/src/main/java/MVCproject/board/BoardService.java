@@ -21,8 +21,8 @@ public class BoardService {
 	   List<ArticleVO> articlesList = boardDAO.selectAllArticles(pagingMap);
 	   int totArticles = boardDAO.selectToArticles();
 	   articleMap.put("articlesList", articlesList);
-	   //articleMap.put("totArticles", totArticles);
-	   articleMap.put("totArticles", 110);
+	   articleMap.put("totArticles", totArticles);
+	   //articleMap.put("totArticles", 115);
 	   return articleMap;
    }
    
