@@ -95,7 +95,6 @@ public class BoardDAO {
 				int articleNo = rs.getInt("articleNo");
 				int parentNo = rs.getInt("parentNo");
 				String title = rs.getString("title");
-				String content = rs.getString("content");
 				String id = rs.getString("id");
 				Date writeDate = rs.getDate("writeDate");
 				ArticleVO articleVO = new ArticleVO();
@@ -103,7 +102,6 @@ public class BoardDAO {
 				articleVO.setArticleNo(articleNo);
 				articleVO.setParentNo(parentNo);
 				articleVO.setTitle(title);
-				articleVO.setContent(content);
 				articleVO.setId(id);
 				articleVO.setWriteDate(writeDate);
 				articlesList.add(articleVO);
