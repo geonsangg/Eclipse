@@ -9,31 +9,29 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
+		request.setCharacterEncoding("utf-8");
 		PrintWriter out=response.getWriter();
-		String user_id=request.getParameter("user_id");
-		String user_pwd=request.getParameter("user_pwd");
-		String user_hp=request.getParameter("user_hp");
-		String user_email=request.getParameter("user_email");
-		String user_address=request.getParameter("user_address");
+		String user_id = request.getParameter("user_id");
+		String user_pw = request.getParameter("user_pw");
+		String user_hp = request.getParameter("user_hp");
+		String user_email = request.getParameter("user_email");
+		String user_address = request.getParameter("user_address");
 		String data="<html><body>";
-		data+="로그인하였습니다.<br>";
-		data+="아이디 : " + user_id + "<br>";
-		data+="비밀번호 : " + user_pwd + "<br>";
-		data+="핸드폰 : " + user_hp + "<br>";
-		data+="이메일 : " + user_email + "<br>";
-		data+="주소 : " + user_address + "<br>";
-		out.print("</body></html>");
+		data+=("<h2>로그인하셨습니다</h2><br>");
+		data+=("<p>아이디: "+user_id+"</p><br>");
+		data+=("<p>비밀번호: "+user_pw+"</p><br>");
+		data+=("<p>연락처"+user_hp+"</p><br>");
+		data+=("<p>이메일"+user_email+"</p><br>");
+		data+=("<p>주소"+user_address+"</p><br>");
+		data+=("</body></html>");
 		out.print(data);
-		
 	}
 
 }
+

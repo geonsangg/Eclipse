@@ -9,30 +9,27 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
 @WebServlet("/sports")
 public class SportsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
+		request.setCharacterEncoding("utf-8");
 		PrintWriter out=response.getWriter();
 		String user_id = request.getParameter("user_id");
 		out.print("<html><body>");
-		if (user_id !=null && user_id.length()!=0) {
-			out.print(user_id+"님이 로그인한 상태<br>");
-			out.print("스포츠 중계 댓글을 넣을 수 있습니다.");
-			out.print("댓글<input type='text'>");
+		if(user_id !=null &&user_id.length() !=0) {
+			out.print("<h3>" + user_id + "님이 로그인 중입니다.</h3>");
+			out.print("<p>스포츠 중계 댓글을 남길 수 있습니다.</p>");
+			out.print("댓글 <input type='text'>");
 		}else {
-			out.print("댓글<input type='text' disabled>");
-			out.print("로그인 하지 않았습니다.<br>");
-			out.print("로그인해주세요<br>");
-			out.print("<a href='/servletlink/login.html'>로그인 창으로 이동하기</a>");
+			out.print("댓글 <input type='text' disabled>");
+			out.print("<p>로그인 하지 않았습니다.</p><br>");
+			out.print("<a href='/servletlink/login.html'>로그인 하기</a>");
+			out.print("</body></html>");
+			
 		}
-		out.print("</body></html>");
-		
 	}
 
 }
